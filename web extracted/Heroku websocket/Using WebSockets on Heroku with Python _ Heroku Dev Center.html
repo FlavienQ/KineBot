@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)https://devcenter.heroku.com/articles/python-websockets -->
+<html lang="en" class=" js flexbox flexboxlegacy hashchange history rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Using WebSockets on Heroku with Python | Heroku Dev Center</title>
+  <link rel="shortcut icon" type="image/x-icon" href="https://www.herokucdn.com/favicon.ico">
+
+    <link rel="alternate" type="application/atom+xml" title="Heroku Recent Articles" href="http://feeds.feedburner.com/herokudevcenterarticles">
+    <link rel="alternate" type="application/atom+xml" title="Heroku Changelog" href="http://feeds.feedburner.com/herokuchangelog">
+  <link rel="search" type="application/opensearchdescription+xml" title="Heroku Dev Center" href="https://devcenter.heroku.com/opensearch.xml">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<script type="text/javascript" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/277498ec79"></script><script type="text/javascript" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/pd.js.download"></script><script src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/nr-1016.min.js.download"></script><script async="" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/fbevents.js.download"></script><script type="text/javascript" async="" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/linkid.js.download"></script><script type="text/javascript" async="" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/51b6483a434bba0f0c000016.js.download"></script><script type="text/javascript" async="" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/analytics.js.download"></script><script async="" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/gtm.js.download"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"277498ec79","applicationID":"7135218","transactionName":"JQxeQ0peWVVTQ01UExIKU1tdQhpKXl4V","queueTime":0,"applicationTime":121,"agent":""}</script>
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var o=t[n]={exports:{}};e[n][0].call(o.exports,function(t){var o=e[n][1][t];return r(o||t)},o,o.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(e,t,n){function r(){}function o(e,t,n){return function(){return i(e,[(new Date).getTime()].concat(u(arguments)),t?null:this,n),t?void 0:this}}var i=e("handle"),a=e(2),u=e(3),c=e("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var s=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(s,function(e,t){f[t]=o(l+t,!0,"api")}),f.addPageAction=o(l+"addPageAction",!0),f.setCurrentRouteName=o(l+"routeName",!0),t.exports=newrelic,f.interaction=function(){return(new r).get()};var d=r.prototype={createTracer:function(e,t){var n={},r=this,o="function"==typeof t;return i(p+"tracer",[Date.now(),e,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return t.apply(this,arguments)}finally{c.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){d[t]=o(p+t)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,(new Date).getTime()])}},{}],2:[function(e,t,n){function r(e,t){var n=[],r="",i=0;for(r in e)o.call(e,r)&&(n[i]=t(r,e[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],3:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,o=n-t||0,i=Array(o<0?0:o);++r<o;)i[r]=e[t+r];return i}t.exports=r},{}],ee:[function(e,t,n){function r(){}function o(e){function t(e){return e&&e instanceof r?e:e?c(e,u,i):i()}function n(n,r,o){if(!p.aborted){e&&e(n,r,o);for(var i=t(o),a=v(n),u=a.length,c=0;c<u;c++)a[c].apply(i,r);var f=s[w[n]];return f&&f.push([y,n,r,i]),i}}function d(e,t){b[e]=v(e).concat(t)}function v(e){return b[e]||[]}function g(e){return l[e]=l[e]||o(n)}function m(e,t){f(e,function(e,n){t=t||"feature",w[n]=t,t in s||(s[t]=[])})}var b={},w={},y={on:d,emit:n,get:g,listeners:v,context:t,buffer:m,abort:a,aborted:!1};return y}function i(){return new r}function a(){(s.api||s.feature)&&(p.aborted=!0,s=p.backlog={})}var u="nr@context",c=e("gos"),f=e(2),s={},l={},p=t.exports=o();p.backlog=s},{}],gos:[function(e,t,n){function r(e,t,n){if(o.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[t]=r,r}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){o.buffer([e],r),o.emit(e,t,n)}var o=e("ee").get("handle");t.exports=r,r.ee=o},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!h++){var e=y.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return f.abort();c(b,function(t,n){e[t]||(e[t]=n)}),u("mark",["onload",a()],null,"api");var n=l.createElement("script");n.src="https://"+e.agent,t.parentNode.insertBefore(n,t)}}function o(){"complete"===l.readyState&&i()}function i(){u("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var u=e("handle"),c=e(2),f=e("ee"),s=window,l=s.document,p="addEventListener",d="attachEvent",v=s.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:v,REQ:s.Request,EV:s.Event,PR:s.Promise,MO:s.MutationObserver},e(1);var m=""+location,b={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1016.min.js"},w=v&&g&&g[p]&&!/CriOS/.test(navigator.userAgent),y=t.exports={offset:a(),origin:m,features:{},xhrWrappable:w};l[p]?(l[p]("DOMContentLoaded",i,!1),s[p]("load",r,!1)):(l[d]("onreadystatechange",o),s[d]("onload",r)),u("mark",["firstbyte",a()],null,"api");var h=0},{}]},{},["loader"]);</script>
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="evGzeCtoF/m6e44+TO9YBh37OiNsi+/0viduxbhFiN0j3R3k2ji7++0jr9SaWNRWbINh/aNp+wLQSlR0Io6KHg==">
+
+  
+
+  <meta name="description" content="A tutorial showing how to build and deploy a Python Flask application application that uses a WebSocket.">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@herokudevcenter">
+    <meta name="twitter:title" content="Using WebSockets on Heroku with Python | Heroku Dev Center">
+    <meta name="twitter:description" content="A tutorial showing how to build and deploy a Python Flask application application that uses a WebSocket.">
+    <meta name="twitter:image" content="https://devcenter-assets1.herokucdn.com/assets/public/heroku-og-cad174838a49b266550809e29026ec9bc18e056dae8f9cf523ea4237379691f9.png">
+
+  <meta property="og:image:secure_url" content="https://devcenter-assets1.herokucdn.com/assets/public/heroku-og-cad174838a49b266550809e29026ec9bc18e056dae8f9cf523ea4237379691f9.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="google-site-verification" content="V3T3n-QnyNOZlSVZgEfdXaKkJKyfw2yIP55nR00C8ZU">
+
+
+  <link rel="stylesheet" media="screen, print" href="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/public-8bae1d577adbcfdaa10a5011b7ee38d018c206a5c21cfbf928c344edcf8922d5.css">
+  
+<script type="text/javascript" async="" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/tagjs"></script><img src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/saved_resource" width="1" height="1" border="0"><img src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/saved_resource(1)" width="1" height="1" border="0"><img src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/saved_resource(2)" width="1" height="1" border="0"><img src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/tr" width="1" height="1" border="0"><img src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/tr(1)" width="1" height="1" border="0"><img src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/seg" width="1" height="1" border="0"><script type="text/javascript" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/analytics"></script></head>
+<body>
+<div class="page-wrapper">
+<header><div id="primary-header">
+<nav id="navigation" role="navigation"><span aria-hidden="true" class="mobile-nav">Show nav<span></span><span></span><span></span><span></span></span><div class="wrapper-full">
+<div id="logo"><a class="heroku-brand" href="https://devcenter.heroku.com/">Heroku Dev Center</a></div>
+<div class="nav-wrapper">
+<ul class="main-nav">
+<li class="secondary-links"><ul>
+<li class="getting-started"><a href="https://devcenter.heroku.com/start">Getting Started</a></li>
+<li class="reference"><a href="https://devcenter.heroku.com/categories/reference">Reference</a></li>
+<li class="learning"><a href="https://devcenter.heroku.com/categories/learning">Learning</a></li>
+</ul></li>
+<li class="has-dropdown">
+<a>By Language</a><ul class="dropdown dropdown-sm">
+<li><a href="https://devcenter.heroku.com/categories/nodejs">Node.js</a></li>
+<li><a href="https://devcenter.heroku.com/categories/ruby">Ruby</a></li>
+<li><a href="https://devcenter.heroku.com/categories/java">Java</a></li>
+<li><a href="https://devcenter.heroku.com/categories/php">PHP</a></li>
+<li><a href="https://devcenter.heroku.com/categories/python">Python</a></li>
+<li><a href="https://devcenter.heroku.com/categories/go">Go</a></li>
+<li><a href="https://devcenter.heroku.com/categories/scala">Scala</a></li>
+<li><a href="https://devcenter.heroku.com/categories/clojure">Clojure</a></li>
+</ul>
+</li>
+<li class="has-dropdown">
+<a>Develop</a><ul class="dropdown">
+<li><a href="https://devcenter.heroku.com/categories/heroku-architecture">Heroku Architecture</a></li>
+<li><a href="https://devcenter.heroku.com/categories/features">Features</a></li>
+<li><a href="https://devcenter.heroku.com/categories/command-line">Command Line</a></li>
+<li><a href="https://devcenter.heroku.com/categories/deployment">Deployment</a></li>
+<li><a href="https://devcenter.heroku.com/categories/security">Security</a></li>
+<li><a href="https://devcenter.heroku.com/categories/application-architecture">Application Architecture</a></li>
+<li><a href="https://devcenter.heroku.com/categories/extending-heroku">Extending Heroku</a></li>
+</ul>
+</li>
+<li><a href="https://devcenter.heroku.com/categories/support">Support</a></li>
+<li class="has-dropdown">
+<a class="nav-more">More</a><div class="dropdown more">
+<section class="more-resources"><span class="more-title">Additional Resources</span><ul>
+<li><a href="https://elements.heroku.com/">Elements</a></li>
+<li><a href="https://www.heroku.com/products">Products</a></li>
+<li><a href="https://www.heroku.com/pricing">Pricing</a></li>
+<li><a href="https://www.heroku.com/careers">Careers</a></li>
+<li><a href="https://help.heroku.com/">Help</a></li>
+<li><a href="https://status.heroku.com/">Status</a></li>
+<li><a href="https://www.heroku.com/events">Events</a></li>
+</ul></section><section class="more-blog" id="more-blog"><span class="more-title">Heroku Blog</span><h3><a class="js-blog-link" href="https://blog.heroku.com/private-spaces-sydney-region">Announcing the Sydney, Australia Region for Heroku Private Spaces</a></h3>
+<p class="js-blog-date">7 days ago by Tim Lang</p>
+<p class="js-blog-content"><p>Today we’re happy to announce that the Sydney, Australia region is now generally available for use with <a href="https://www.heroku.com/private-spaces">Heroku Private Spaces</a>. Sydney joins... <a href="https://blog.heroku.com/private-spaces-sydney-region">Read More</a></p></p>
+<a class="button btn-default btn-sm btn-inline" href="https://blog.heroku.com/">Visit Blog</a></section>
+</div>
+</li>
+</ul>
+<ul class="tool-nav">
+<li><div id="search-field-mobile"><form class="search-form" action="https://devcenter.heroku.com/search/raw" accept-charset="UTF-8" method="get">
+<input name="utf8" type="hidden" value="✓"><div class="search-input-group">
+<span class="icon-search"></span><input type="text" name="query" id="query" placeholder="Search" required="required" class="js-search form-control" tabindex="1">
+</div>
+</form></div></li>
+<li><div class="glostick__user">
+<div class="has-dropdown glostick__menu-icon">
+<div class="icon icon-navigator-toggle"></div>
+<div class="dropdown glostick__menu--navigator">
+<a class="glostick__menu__item glostick__menu__item--dashboard" href="https://dashboard.heroku.com/">Dashboard</a><a class="glostick__menu__item glostick__menu__item--databases" href="https://postgres.heroku.com/">Databases</a><a class="glostick__menu__item glostick__menu__item--dataclips" href="https://dataclips.heroku.com/">Dataclips</a><a class="glostick__menu__item glostick__menu__item--elements" href="https://elements.heroku.com/">Elements</a><a class="glostick__menu__item glostick__menu__item--docs" href="https://devcenter.heroku.com/">Documentation</a><a class="glostick__menu__item glostick__menu__item--support" href="https://help.heroku.com/">Support</a>
+</div>
+</div>
+<div class="has-dropdown glostick__menu-icon glostick__menu-icon--account">
+<img class="glostick__user__avatar js-glostick-avatar" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/8c7673bc6ed8a3005242cb2eadc10731"><a class="mobile-dashboard-link" href="https://dashboard.heroku.com/" title="Flavien Quijoux, flquijoux@gmail.com"><img class="glostick__user__avatar js-glostick-avatar" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/8c7673bc6ed8a3005242cb2eadc10731"></a><div class="dropdown glostick__menu--account">
+<a class="glostick__menu__item glostick__menu__item--account-details"><img class="glostick__account-details__avatar js-glostick-avatar" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/8c7673bc6ed8a3005242cb2eadc10731"><div class="glostick__account-details__name">Flavien Quijoux</div>
+<div class="glostick__account-details__email">flquijoux@gmail.com</div></a><a class="glostick__menu__item glostick__menu__item--settings" href="https://dashboard.heroku.com/account">Account Settings</a><a class="glostick__menu__item glostick__menu__item--signout" href="https://devcenter.heroku.com/logout?back_to=%2Farticles%2Fpython-websockets">Sign out</a>
+</div>
+</div>
+</div></li>
+</ul>
+</div>
+</div></nav><div id="search-field-desktop"><form class="search-form" action="https://devcenter.heroku.com/search/raw" accept-charset="UTF-8" method="get">
+<input name="utf8" type="hidden" value="✓"><div class="search-input-group">
+<span class="icon-search"></span><input type="text" name="query" id="query" placeholder="Search" required="required" class="js-search form-control" tabindex="1">
+</div>
+</form></div>
+</div>
+<div id="secondary-header"><div class="page-subnav"><ul class="nav navbar-nav">
+<li class="getting-started"><a href="https://devcenter.heroku.com/start">Getting Started</a></li>
+<li class="reference"><a href="https://devcenter.heroku.com/categories/reference">Reference</a></li>
+<li class="learning"><a class=" active" href="https://devcenter.heroku.com/categories/learning">Learning</a></li>
+</ul></div></div></header><div class="container">
+<div class="col-md-4 sidebar nocontent"><ul class="secondary-nav nav"><li>
+<h2>Learning</h2>
+<ul><li><a href="https://devcenter.heroku.com/categories/application-architecture">Application Architecture</a></li></ul>
+<ul>
+<li><a href="https://devcenter.heroku.com/categories/nodejs">Node.js</a></li>
+<li><a href="https://devcenter.heroku.com/categories/ruby">Ruby</a></li>
+<li><a href="https://devcenter.heroku.com/categories/java">Java</a></li>
+<li><a href="https://devcenter.heroku.com/categories/php">PHP</a></li>
+<li><a class=" active" href="https://devcenter.heroku.com/categories/python">Python</a></li>
+<li><a href="https://devcenter.heroku.com/categories/go">Go</a></li>
+<li><a href="https://devcenter.heroku.com/categories/scala">Scala</a></li>
+<li><a href="https://devcenter.heroku.com/categories/clojure">Clojure</a></li>
+</ul>
+<ul>
+<li><a href="https://devcenter.heroku.com/categories/mobile">Mobile</a></li>
+<li><a href="https://devcenter.heroku.com/categories/database">Database</a></li>
+</ul>
+<ul><li><a href="https://devcenter.heroku.com/categories/miscellaneous">Miscellaneous</a></li></ul>
+<ul><li><a href="https://devcenter.heroku.com/categories/add-on-documentation">All Add-ons</a></li></ul>
+</li></ul></div>
+<div class="col-md-8 content"><article class="js-autolink "><h1>Using WebSockets on Heroku with Python</h1>
+<p class="last-updated"><span class="icon-clock"></span>Last updated 26 August 2016</p>
+<div id="table-of-contents">
+<h3>
+<span class="icon-list"></span>Table of Contents</h3>
+<ul>
+<li><a href="https://devcenter.heroku.com/articles/python-websockets#prerequisites">Prerequisites</a></li>
+<li><a href="https://devcenter.heroku.com/articles/python-websockets#create-websocket-app">Create WebSocket app</a></li>
+<li><a href="https://devcenter.heroku.com/articles/python-websockets#functionality">Functionality</a></li>
+<li><a href="https://devcenter.heroku.com/articles/python-websockets#run-locally">Run locally</a></li>
+<li><a href="https://devcenter.heroku.com/articles/python-websockets#deploy">Deploy</a></li>
+<li><a href="https://devcenter.heroku.com/articles/python-websockets#next-steps">Next Steps</a></li>
+</ul>
+</div>
+<p>This tutorial will get you going with a Python application that uses a WebSocket, deployed to Heroku.</p>
+
+<div class="note">
+<p>Sample code for the <a href="https://github.com/heroku-examples/python-websockets-chat">demo application</a> is available on GitHub. Edits and enhancements are welcome. Just fork the repository, make your changes and send us a pull request.</p>
+</div>
+
+<h2 id="prerequisites"><a href="https://devcenter.heroku.com/articles/python-websockets#prerequisites">Prerequisites</a></h2>
+
+<ul>
+<li>Python 2.7, Git, and the Heroku client (as described in the <a href="https://devcenter.heroku.com/articles/getting-started-with-python">basic Python quickstart</a>)</li>
+<li>A Heroku user account.  <a href="https://signup.heroku.com/signup/dc">Signup is free and instant</a>.</li>
+</ul>
+
+<h2 id="create-websocket-app"><a href="https://devcenter.heroku.com/articles/python-websockets#create-websocket-app">Create WebSocket app</a></h2>
+
+<p>The sample application provides a simple example of using WebSockets with Python. You can clone the sample and follow along with the code as you read.</p>
+
+<h3 id="option-1-clone-the-sample-app"><a href="https://devcenter.heroku.com/articles/python-websockets#option-1-clone-the-sample-app">Option 1. Clone the sample app</a></h3>
+
+<p>If you want to get going more quickly you can just clone the sample app:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> git clone git@github.com:heroku-examples/python-websockets-chat.git
+</span><span class="string">Cloning into 'python-websockets-chat'...
+</span><span class="string">remote: Counting objects: 31, done.
+</span><span class="string">remote: Compressing objects: 100% (24/24), done.
+</span><span class="string">remote: Total 31 (delta 0), reused 31 (delta 0)
+</span><span class="string">Receiving objects: 100% (31/31), 38.33 KiB | 0 bytes/s, done.
+</span></pre></div>
+</div>
+
+
+<h3 id="option-2-create-a-new-flask-app"><a href="https://devcenter.heroku.com/articles/python-websockets#option-2-create-a-new-flask-app">Option 2. Create a new Flask app.</a></h3>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> mkdir python-websockets-chat
+</span><span class="prompt">$</span><span class="function"> cd python-websockets-chat
+</span></pre></div>
+</div>
+
+
+<h2 id="functionality"><a href="https://devcenter.heroku.com/articles/python-websockets#functionality">Functionality</a></h2>
+
+<p>The sample application is a simple chat application that will open a WebSocket to the backend. Any time a chat message is sent from the browser, it’s sent to the server and then broadcasted to each connecting client and displayed on the page.</p>
+
+<p>There are a few key pieces to this whole thing. We’re using <a href="https://github.com/kennethreitz/flask-sockets">Flask-Sockets</a> that provides the standard <a href="http://dev.w3.org/html5/websockets/">WebSockets API</a>. This allows us to build a simple Flask application that also responds to WebSocket requests. JavaScript on the browser opens a WebSocket connection to the server and responds to a WebSocket message being received from the server to display the chat message. Let’s take a look at both the backend and front-end in more detail.</p>
+
+<h3 id="dependencies"><a href="https://devcenter.heroku.com/articles/python-websockets#dependencies">Dependencies</a></h3>
+
+<p>First, we need to install our dependencies with Pip. To learn more about Pip on Heroku, see <a href="https://devcenter.heroku.com/articles/python-pip">Python Dependencies via Pip</a>.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>$ pip install Flask Flask-Sockets Gunicorn redis
+...
+Cleaning up...
+
+$ pip freeze &gt; requirements.txt
+</pre></div>
+</div>
+
+
+<p>Next, we’ll create a file called <code>chat.py</code> that includes our Flask imports and configurations:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="comment"># chat.py</span>
+<span class="keyword">import</span> <span class="include">os</span>
+<span class="keyword">import</span> <span class="include">logging</span>
+<span class="keyword">import</span> <span class="include">redis</span>
+<span class="keyword">import</span> <span class="include">gevent</span>
+<span class="keyword">from</span> <span class="include">flask</span> <span class="keyword">import</span> <span class="include">Flask</span>, <span class="include">render_template</span>
+<span class="keyword">from</span> <span class="include">flask_sockets</span> <span class="keyword">import</span> <span class="include">Sockets</span>
+
+REDIS_URL = os.environ[<span class="string"><span class="delimiter">'</span><span class="content">REDIS_URL</span><span class="delimiter">'</span></span>]
+REDIS_CHAN = <span class="string"><span class="delimiter">'</span><span class="content">chat</span><span class="delimiter">'</span></span>
+
+app = Flask(__name__)
+app.debug = <span class="string"><span class="delimiter">'</span><span class="content">DEBUG</span><span class="delimiter">'</span></span> <span class="keyword">in</span> os.environ
+
+sockets = Sockets(app)
+redis = redis.from_url(REDIS_URL)
+</pre></div>
+</div>
+
+
+<h3 id="back-end"><a href="https://devcenter.heroku.com/articles/python-websockets#back-end">Back-end</a></h3>
+
+<p>Next, create a class called <code>ChatBackend</code> to register and push updates to
+all connected WebSockets clients. We’ll be using Redis to subscribe to updates
+from all users.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="keyword">class</span> <span class="class">ChatBackend</span>(<span class="predefined">object</span>):
+    <span class="docstring"><span class="delimiter">"""</span><span class="content">Interface for registering and updating WebSocket clients.</span><span class="delimiter">"""</span></span>
+
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="predefined-constant">self</span>):
+        <span class="predefined-constant">self</span>.clients = <span class="predefined">list</span>()
+        <span class="predefined-constant">self</span>.pubsub = redis.pubsub()
+        <span class="predefined-constant">self</span>.pubsub.subscribe(REDIS_CHAN)
+
+    <span class="keyword">def</span> <span class="function">__iter_data</span>(<span class="predefined-constant">self</span>):
+        <span class="keyword">for</span> message <span class="keyword">in</span> <span class="predefined-constant">self</span>.pubsub.listen():
+            data = message.get(<span class="string"><span class="delimiter">'</span><span class="content">data</span><span class="delimiter">'</span></span>)
+            <span class="keyword">if</span> message[<span class="string"><span class="delimiter">'</span><span class="content">type</span><span class="delimiter">'</span></span>] == <span class="string"><span class="delimiter">'</span><span class="content">message</span><span class="delimiter">'</span></span>:
+                app.logger.info(<span class="string"><span class="modifier">u</span><span class="delimiter">'</span><span class="content">Sending message: {}</span><span class="delimiter">'</span></span>.format(data))
+                <span class="keyword">yield</span> data
+
+    <span class="keyword">def</span> <span class="function">register</span>(<span class="predefined-constant">self</span>, client):
+        <span class="docstring"><span class="delimiter">"""</span><span class="content">Register a WebSocket connection for Redis updates.</span><span class="delimiter">"""</span></span>
+        <span class="predefined-constant">self</span>.clients.append(client)
+
+    <span class="keyword">def</span> <span class="function">send</span>(<span class="predefined-constant">self</span>, client, data):
+        <span class="docstring"><span class="delimiter">"""</span><span class="content">Send given data to the registered client.</span><span class="content">
+</span><span class="content">        Automatically discards invalid connections.</span><span class="delimiter">"""</span></span>
+        <span class="keyword">try</span>:
+            client.send(data)
+        <span class="keyword">except</span> <span class="exception">Exception</span>:
+            <span class="predefined-constant">self</span>.clients.remove(client)
+
+    <span class="keyword">def</span> <span class="function">run</span>(<span class="predefined-constant">self</span>):
+        <span class="docstring"><span class="delimiter">"""</span><span class="content">Listens for new messages in Redis, and sends them to clients.</span><span class="delimiter">"""</span></span>
+        <span class="keyword">for</span> data <span class="keyword">in</span> <span class="predefined-constant">self</span>.__iter_data():
+            <span class="keyword">for</span> client <span class="keyword">in</span> <span class="predefined-constant">self</span>.clients:
+                gevent.spawn(<span class="predefined-constant">self</span>.send, client, data)
+
+    <span class="keyword">def</span> <span class="function">start</span>(<span class="predefined-constant">self</span>):
+        <span class="docstring"><span class="delimiter">"""</span><span class="content">Maintains Redis subscription in the background.</span><span class="delimiter">"""</span></span>
+        gevent.spawn(<span class="predefined-constant">self</span>.run)
+</pre></div>
+</div>
+
+
+<p>This class allows us to subscribe once (per process) to incoming messages
+from Redis in the background, while updating each connected WebSocket client
+asyncronously:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>chats = ChatBackend()
+chats.start()
+</pre></div>
+</div>
+
+
+<p>Next, let’s setup a standard URL endpoint:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="decorator">@app.route</span>(<span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span>)
+<span class="keyword">def</span> <span class="function">hello</span>():
+    <span class="keyword">return</span> render_template(<span class="string"><span class="delimiter">'</span><span class="content">index.html</span><span class="delimiter">'</span></span>)
+</pre></div>
+</div>
+
+
+<h3 id="endpoints"><a href="https://devcenter.heroku.com/articles/python-websockets#endpoints">Endpoints</a></h3>
+
+<p>With Flask-Sockets, we can create WebSocket endpoints, much like standard ones.
+In this case, we’ll have one endpoint for sending and one for receiving messages.</p>
+
+<p>Flask-Sockets will automatically upgrade incoming requests to <code>/submit</code>
+and <code>/receive</code> to WebSocket connections. The first parameter to these functions
+(e.g. <code>ws</code>) is the raw websocket connection. Because we’re using Gevent, each
+process can have thousands of concurrent connections.</p>
+
+<p>Our first endpoint is <code>/submit</code>. This WebSocket endpoint will be used for
+submitting new messages to the chat service. Incoming messages are received via
+<code>ws.receive()</code> as standard Python strings. We’ll take those messages and insert
+them into our Redis subscription channel, so all connected servers can receive
+updates.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="decorator">@sockets.route</span>(<span class="string"><span class="delimiter">'</span><span class="content">/submit</span><span class="delimiter">'</span></span>)
+<span class="keyword">def</span> <span class="function">inbox</span>(ws):
+    <span class="docstring"><span class="delimiter">"""</span><span class="content">Receives incoming chat messages, inserts them into Redis.</span><span class="delimiter">"""</span></span>
+    <span class="keyword">while</span> <span class="keyword">not</span> ws.closed:
+        <span class="comment"># Sleep to prevent *contstant* context-switches.</span>
+        gevent.sleep(<span class="float">0.1</span>)
+        message = ws.receive()
+
+        <span class="keyword">if</span> message:
+            app.logger.info(<span class="string"><span class="modifier">u</span><span class="delimiter">'</span><span class="content">Inserting message: {}</span><span class="delimiter">'</span></span>.format(message))
+            redis.publish(REDIS_CHAN, message)
+
+</pre></div>
+</div>
+
+
+<p>Our second endpoint is <code>/receive</code>. This WebSocket endpoint will be used for
+receiving new messages from our Redis subscription channel, and sending them to
+the connected client. Because we only want one Redis connection per process,
+we’ll send our WebSocket instance to the <code>ChatBackend</code> discussed earlier. It’ll
+handle things from there, but we need to keep the socket open so it can receive
+updates. To do this, we’ll just run <code>gevent.sleep()</code> perpetually, to trigger a
+Gevent context switch.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="decorator">@sockets.route</span>(<span class="string"><span class="delimiter">'</span><span class="content">/receive</span><span class="delimiter">'</span></span>)
+<span class="keyword">def</span> <span class="function">outbox</span>(ws):
+    <span class="docstring"><span class="delimiter">"""</span><span class="content">Sends outgoing chat messages, via `ChatBackend`.</span><span class="delimiter">"""</span></span>
+    chats.register(ws)
+
+    <span class="keyword">while</span> <span class="keyword">not</span> ws.closed:
+        <span class="comment"># Context switch while `ChatBackend.start` is running in the background.</span>
+        gevent.sleep(<span class="float">0.1</span>)
+</pre></div>
+</div>
+
+
+<p>Now, when a new user connects to <code>/receive</code>, our <code>ChatBackend</code> instance will
+sleep, and new messages from our Redis channel will be pushed to the user’s
+webbrowser.</p>
+
+<p>Because of this architectural model, you can run this application on as many
+Dynos as you want and all of your users will be able to receive updates.</p>
+
+<p>See the <a href="https://github.com/heroku-examples/python-websockets-chat/blob/master/chat.py">full version of <code>chat.py</code> on GitHub</a>.</p>
+
+<h3 id="front-end"><a href="https://devcenter.heroku.com/articles/python-websockets#front-end">Front-end</a></h3>
+
+<p>The second part of this is setting up the client side to actually open the
+WebSockets connection with the server. We’ll be using that <code>/</code> view we defined
+earlier.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="decorator">@app.route</span>(<span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span>)
+<span class="keyword">def</span> <span class="function">hello</span>():
+    <span class="keyword">return</span> render_template(<span class="string"><span class="delimiter">'</span><span class="content">index.html</span><span class="delimiter">'</span></span>)
+</pre></div>
+</div>
+
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="comment">&lt;!-- templates/index.html --&gt;</span>
+<span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Python Websockets Chat Demo<span class="tag">&lt;/title&gt;</span>
+    <span class="tag">&lt;link</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">static/css/bootstrap.min.css</span><span class="delimiter">"</span></span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">"</span><span class="content">stylesheet</span><span class="delimiter">"</span></span> <span class="attribute-name">media</span>=<span class="string"><span class="delimiter">"</span><span class="content">screen</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;link</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">static/css/application.css</span><span class="delimiter">"</span></span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">"</span><span class="content">stylesheet</span><span class="delimiter">"</span></span> <span class="attribute-name">media</span>=<span class="string"><span class="delimiter">"</span><span class="content">screen</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">viewport</span><span class="delimiter">"</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">"</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">container</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">jumbotron</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;h1&gt;</span>Python Websockets Chat Demo<span class="tag">&lt;/h1&gt;</span>
+        <span class="tag">&lt;p&gt;</span>This is a Python WebSockets Chat Demo. The code lives <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">https://github.com/heroku-examples/</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>on GitHub<span class="tag">&lt;/a&gt;</span>. You can find the full guide <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">https://devcenter.heroku.com/articles/python-websockets</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>on Heroku DevCenter<span class="tag">&lt;/a&gt;</span>.<span class="tag">&lt;/p&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;form</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">input-form</span><span class="delimiter">"</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">form-inline</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">form-group</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;input</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">input-handle</span><span class="delimiter">"</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">text</span><span class="delimiter">"</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">form-control</span><span class="delimiter">"</span></span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">"</span><span class="content">Enter handle</span><span class="delimiter">"</span></span> <span class="attribute-name">autofocus</span> <span class="tag">/&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">form-group</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+          <span class="tag">&lt;input</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">input-text</span><span class="delimiter">"</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">text</span><span class="delimiter">"</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">form-control</span><span class="delimiter">"</span></span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">"</span><span class="content">Enter chat text here!</span><span class="delimiter">"</span></span> <span class="attribute-name">autofocus</span> <span class="tag">/&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">btn btn-primary</span><span class="delimiter">"</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">submit</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>Send<span class="tag">&lt;/button&gt;</span>
+      <span class="tag">&lt;/form&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">page-header</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;h1&gt;</span>Chat<span class="tag">&lt;/h1&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">"</span><span class="content">chat-text</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+
+
+    <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">text/javascript</span><span class="delimiter">"</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">static/js/jquery-2.0.3.min.js</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">text/javascript</span><span class="delimiter">"</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">static/js/reconnecting-websocket.min.js</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">text/javascript</span><span class="delimiter">"</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">static/js/application.js</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+</pre></div>
+</div>
+
+
+<p>The index page uses <a href="http://getbootstrap.com/">Bootstrap</a> for CSS and
+<a href="http://jquery.com/">jQuery</a> JavaScript help. We’re storing all of our
+static assets in the <code>static</code> folder. Flask by default will serve
+static files in <code>public/</code>. We’ll need to get these files.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> mkdir -p static static/css static/js
+</span><span class="prompt">$</span><span class="function"> curl -o static/js/jquery-2.0.3.min.js http://code.jquery.com/jquery-2.0.3.min.js
+</span><span class="prompt">$</span><span class="function"> curl -o static/js/reconnecting-websocket.min.js https://raw.github.com/joewalnes/reconnecting-websocket/master/reconnecting-websocket.min.js
+</span><span class="prompt">$</span><span class="function"> curl -o static/css/bootstrap.min.css http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css
+</span></pre></div>
+</div>
+
+
+<p>With a small CSS trick, we can get a scrolling chat window that contains
+all the messages by using the <code>overflow</code> attribute.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="comment">/* static/css/application.css */</span>
+<span class="id">#chat-text</span> {
+  <span class="key">overflow</span>: <span class="value">auto</span>;
+  <span class="key">height</span>: <span class="float">500px</span>;
+}
+</pre></div>
+</div>
+
+
+<p>Now back to WebSockets. Let’s write the <code>static/js/application.js</code> that gets
+loaded by the main page.  First, let’s open our WebSocket connections to the server.
+We’ll be using <a href="https://github.com/joewalnes/reconnecting-websocket">reconnecting-websocket</a>,
+which will automatically reconnect any disrupted connections in the browser.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="comment">// static/js/application.js</span>
+
+<span class="comment">// Support TLS-specific URLs, when appropriate.</span>
+<span class="keyword">if</span> (window.location.protocol == <span class="string"><span class="delimiter">"</span><span class="content">https:</span><span class="delimiter">"</span></span>) {
+  <span class="keyword">var</span> ws_scheme = <span class="string"><span class="delimiter">"</span><span class="content">wss://</span><span class="delimiter">"</span></span>;
+} <span class="keyword">else</span> {
+  <span class="keyword">var</span> ws_scheme = <span class="string"><span class="delimiter">"</span><span class="content">ws://</span><span class="delimiter">"</span></span>
+};
+
+<span class="keyword">var</span> inbox = <span class="keyword">new</span> ReconnectingWebSocket(ws_scheme + location.host + <span class="string"><span class="delimiter">"</span><span class="content">/receive</span><span class="delimiter">"</span></span>);
+<span class="keyword">var</span> outbox = <span class="keyword">new</span> ReconnectingWebSocket(ws_scheme + location.host + <span class="string"><span class="delimiter">"</span><span class="content">/submit</span><span class="delimiter">"</span></span>);
+</pre></div>
+</div>
+
+
+<p>With an open WebSocket, the browser will receive messages and we’ll define a function to handle this. The messages we’re using will be a JSON response with two keys: <code>handle</code> (user’s handle) and <code>text</code> (user’s message). When the message is received, it needs to be parsed by JSON and then inserted as a new entry in the page. We’ll spruce it up with a bit of jQuery <code>animate</code>.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>inbox.<span class="function">onmessage</span> = <span class="keyword">function</span>(message) {
+  <span class="keyword">var</span> data = JSON.parse(message.data);
+  <span class="predefined">$</span>(<span class="string"><span class="delimiter">"</span><span class="content">#chat-text</span><span class="delimiter">"</span></span>).append(<span class="string"><span class="delimiter">"</span><span class="content">&lt;div class='panel panel-default'&gt;&lt;div class='panel-heading'&gt;</span><span class="delimiter">"</span></span> + <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">&lt;span/&gt;</span><span class="delimiter">'</span></span>).text(data.handle).html() + <span class="string"><span class="delimiter">"</span><span class="content">&lt;/div&gt;&lt;div class='panel-body'&gt;</span><span class="delimiter">"</span></span> + <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">&lt;span/&gt;</span><span class="delimiter">'</span></span>).text(data.text).html() + <span class="string"><span class="delimiter">"</span><span class="content">&lt;/div&gt;&lt;/div&gt;</span><span class="delimiter">"</span></span>);
+  <span class="predefined">$</span>(<span class="string"><span class="delimiter">"</span><span class="content">#chat-text</span><span class="delimiter">"</span></span>).stop().animate({
+    <span class="key">scrollTop</span>: <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#chat-text</span><span class="delimiter">'</span></span>)[<span class="integer">0</span>].scrollHeight
+  }, <span class="integer">800</span>);
+};
+</pre></div>
+</div>
+
+
+<p>The now that the page can receive messages from the server, we need a way to actually send messages. We’re going to override how the submit button works in our input form. We’ll be using <code>event.preventDefault()</code> to stop the form from actually sending a POST to the form. Instead, we want to grab the the values from the form and send them as a JSON message over the WebSocket to the server.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="predefined">$</span>(<span class="string"><span class="delimiter">"</span><span class="content">#input-form</span><span class="delimiter">"</span></span>).on(<span class="string"><span class="delimiter">"</span><span class="content">submit</span><span class="delimiter">"</span></span>, <span class="keyword">function</span>(event) {
+  event.preventDefault();
+  <span class="keyword">var</span> handle = <span class="predefined">$</span>(<span class="string"><span class="delimiter">"</span><span class="content">#input-handle</span><span class="delimiter">"</span></span>)[<span class="integer">0</span>].value;
+  <span class="keyword">var</span> text   = <span class="predefined">$</span>(<span class="string"><span class="delimiter">"</span><span class="content">#input-text</span><span class="delimiter">"</span></span>)[<span class="integer">0</span>].value;
+  outbox.send(JSON.stringify({ <span class="key">handle</span>: handle, <span class="key">text</span>: text }));
+  <span class="predefined">$</span>(<span class="string"><span class="delimiter">"</span><span class="content">#input-text</span><span class="delimiter">"</span></span>)[<span class="integer">0</span>].value = <span class="string"><span class="delimiter">"</span><span class="delimiter">"</span></span>;
+});
+</pre></div>
+</div>
+
+
+<p>See the <a href="https://github.com/heroku-examples/python-websockets-chat/blob/master/static/js/application.js">full version of <code>application.js</code> on GitHub</a>.</p>
+
+<h2 id="run-locally"><a href="https://devcenter.heroku.com/articles/python-websockets#run-locally">Run locally</a></h2>
+
+<p>Next, we’ll create a <a href="https://devcenter.heroku.com/articles/procfile">Procfile</a>, which declares our ‘web’ process:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>web: gunicorn -k flask_sockets.worker chat:app
+</pre></div>
+</div>
+
+
+<p>The Heroku CLI comes with the <a href="https://devcenter.heroku.com/articles/heroku-local">Heroku Local</a> command to assist us. We’ll want to specify a port to use.</p>
+
+<p>Let’s launch the web app locally.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> heroku local
+</span><span class="string">11:33:12 web.1  | started with pid 3419
+</span><span class="string">11:33:13 web.1  | 2013-10-04 11:33:13 [3419] [INFO] Starting gunicorn 18.0
+</span><span class="string">11:33:13 web.1  | 2013-10-04 11:33:13 [3419] [INFO] Listening at: http://0.0.0.0:5000 (3419)
+</span><span class="string">11:33:13 web.1  | 2013-10-04 11:33:13 [3419] [INFO] Using worker: flask_sockets.worker
+</span><span class="string">11:33:13 web.1  | 2013-10-04 11:33:13 [3422] [INFO] Booting worker with pid: 3422
+</span></pre></div>
+</div>
+
+
+<h2 id="deploy"><a href="https://devcenter.heroku.com/articles/python-websockets#deploy">Deploy</a></h2>
+
+<p>It’s time to deploy your app to Heroku. If you haven’t done so already put your application into a git repository:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> git init
+</span><span class="prompt">$</span><span class="function"> git add .
+</span><span class="prompt">$</span><span class="function"> git commit -m "Ready to deploy"
+</span></pre></div>
+</div>
+
+
+<p>Create the Heroku app to deploy to:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> heroku create
+</span><span class="string">Creating limitless-ocean-5046... done, stack is cedar-14
+</span><span class="string">http://limitless-ocean-5046.herokuapp.com/ | git@heroku.com:limitless-ocean-5046.git
+</span><span class="string">Git remote heroku added
+</span></pre></div>
+</div>
+
+
+<p>Add a Redis <a href="https://elements.heroku.com/addons">add-on</a>:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> heroku addons:create heroku-redis
+</span><span class="string">Creating redis-spherical-63047... done, (free)
+</span><span class="string">Adding redis-spherical-63047 to limitless-ocean-5046... done
+</span></pre></div>
+</div>
+
+
+<p>Deploy your code with <code>git push</code>.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> git push heroku master
+</span><span class="string">Counting objects: 113, done.
+</span><span class="string">Delta compression using up to 4 threads.
+</span><span class="string">Compressing objects: 100% (109/109), done.
+</span><span class="string">Writing objects: 100% (113/113), 156.22 KiB, done.
+</span><span class="string">Total 113 (delta 60), reused 0 (delta 0)
+</span><span class="string">
+</span><span class="string">-----&gt; Python app detected
+</span><span class="string">-----&gt; No runtime.txt provided; assuming python-2.7.4.
+</span><span class="string">-----&gt; Preparing Python runtime (python-2.7.4)
+</span><span class="string">-----&gt; Installing Distribute (0.6.36)
+</span><span class="string">-----&gt; Installing Pip (1.3.1)
+</span><span class="string">-----&gt; Installing dependencies using Pip (1.3.1)
+</span><span class="string">       ...
+</span><span class="string">       Successfully installed Flask Flask-Sockets Jinja2 MarkupSafe Werkzeug distribute gevent gevent-websocket greenlet gunicorn itsdangerous redis
+</span><span class="string">       Cleaning up...
+</span><span class="string">-----&gt; Discovering process types
+</span><span class="string">       Procfile declares types -&gt; web
+</span><span class="string">
+</span><span class="string">-----&gt; Compiled slug size: 29.1MB
+</span><span class="string">-----&gt; Launching... done, v3
+</span><span class="string">       http://intense-brook-6616.herokuapp.com deployed to Heroku
+</span></pre></div>
+</div>
+
+
+<p>Congratulations! Your web app should now be up and running on Heroku.</p>
+
+<h2 id="next-steps"><a href="https://devcenter.heroku.com/articles/python-websockets#next-steps">Next Steps</a></h2>
+
+<p>Now that you have deployed your app and understand the very basics we’ll want
+to expand the app to be a bit more robust. This won’t encompass everything
+you’d want to do before going public, but it will get you along the a path
+ where you’ll be thinking about the right things.</p>
+
+<h4 id="using-redis-locally-add-to-env"><a href="https://devcenter.heroku.com/articles/python-websockets#using-redis-locally-add-to-env">Using Redis locally, add to .env</a></h4>
+
+<p>To connect to Redis locally, add a <code>.env</code> file with your environment variables,
+including <code>REDIS_URL</code>. You can easily copy all of Heroku’s variables to a
+local <code>.env</code> file:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>$ heroku config -s &gt; .env
+</pre></div>
+</div>
+
+
+<p>Heroku Local will automatically include these values when it is run.</p>
+
+<h3 id="security"><a href="https://devcenter.heroku.com/articles/python-websockets#security">Security</a></h3>
+
+<p>Remember, this is only a demo application and is likely vulnerable to various
+attacks. Please refer to <a href="https://devcenter.heroku.com/articles/websocket-security">WebSockets Security</a>
+for more general guidelines on securing your WebSocket application.</p>
+
+<h4 id="websockets-tls-wss"><a href="https://devcenter.heroku.com/articles/python-websockets#websockets-tls-wss">WebSockets + TLS = wss://</a></h4>
+
+<p>The first easy thing we can do here is ensure that all of our production
+traffic is going through the <code>wss://</code> protocol to encrypt our traffic
+similiar to <code>https://</code>. To do this, you can simply change the <code>ws://</code>
+strings in to <code>wss://</code> in <code>application.js</code> for secure requests.</p>
+<div class="article-footer panel">
+<div class="article-tags">
+<span class="icon-tags"></span><a href="https://devcenter.heroku.com/tags/flask">flask</a> <a href="https://devcenter.heroku.com/tags/gevent">gevent</a> <a href="https://devcenter.heroku.com/tags/python">python</a> <a href="https://devcenter.heroku.com/tags/websockets">websockets</a>
+</div>
+<div class="nocontent keep-reading" id="keep-reading">
+<h3>
+<span class="icon-book-open"></span><a href="https://devcenter.heroku.com/articles/python-websockets#keep-reading">Keep reading</a>
+</h3>
+<ul class="list-icons">
+<li>
+<span class="icon-files"></span><a href="https://devcenter.heroku.com/categories/python">Python</a>
+</li>
+<li>
+<span class="icon-file"></span><a href="https://devcenter.heroku.com/articles/getting-started-with-python">Getting Started on Heroku with Python</a>
+</li>
+<li>
+<span class="icon-file"></span><a href="https://devcenter.heroku.com/articles/python-pip">Python Dependencies via Pip</a>
+</li>
+<li>
+<span class="icon-file"></span><a href="https://devcenter.heroku.com/articles/procfile">Process Types and the Procfile</a>
+</li>
+</ul>
+</div>
+<div class="article-feedback" id="feedback">
+<h3><a href="https://devcenter.heroku.com/articles/python-websockets#feedback"><span class="icon-discussion"></span>Feedback</a></h3>
+<p><a href="https://devcenter.heroku.com/login?back_to=%2Farticles%2Fpython-websockets&amp;utm_campaign=login&amp;utm_medium=feedback&amp;utm_source=web">Log in to submit feedback.</a></p>
+</div>
+</div></article></div>
+<div class="pagination"><a rel="prev" href="https://devcenter.heroku.com/articles/celery-heroku">Using Celery on Heroku</a></div>
+</div>
+<footer id="heroku-footer"><div class="wrapper">
+<div class="col heroku-footer-links">
+<nav class="col"><h4>Information &amp; Support</h4>
+<ul>
+<li><a href="https://devcenter.heroku.com/start">Getting Started</a></li>
+<li><a href="https://devcenter.heroku.com/categories/reference">Reference</a></li>
+<li><a href="https://devcenter.heroku.com/categories/learning">Learning</a></li>
+<li><a href="https://devcenter.heroku.com/changelog">Changelog</a></li>
+<li><a href="https://blog.heroku.com/">Blog</a></li>
+<li><a href="https://devcenter.heroku.com/articles/support-channels">Support Channels</a></li>
+<li><a href="https://status.heroku.com/">Status</a></li>
+</ul></nav><nav class="col"><h4>Language Reference</h4>
+<ul>
+<li><a href="https://devcenter.heroku.com/categories/nodejs">Node.js</a></li>
+<li><a href="https://devcenter.heroku.com/categories/ruby">Ruby</a></li>
+<li><a href="https://devcenter.heroku.com/categories/java">Java</a></li>
+<li><a href="https://devcenter.heroku.com/categories/php">PHP</a></li>
+<li><a href="https://devcenter.heroku.com/categories/python">Python</a></li>
+<li><a href="https://devcenter.heroku.com/categories/go">Go</a></li>
+<li><a href="https://devcenter.heroku.com/categories/scala">Scala</a></li>
+<li><a href="https://devcenter.heroku.com/categories/clojure">Clojure</a></li>
+</ul></nav><nav class="col"><h4>Other Resources</h4>
+<ul>
+<li><a href="https://www.heroku.com/careers">Careers</a></li>
+<li><a href="https://elements.heroku.com/">Elements</a></li>
+<li><a href="https://www.heroku.com/products">Products</a></li>
+<li><a href="https://www.heroku.com/pricing">Pricing</a></li>
+</ul></nav>
+</div>
+<div class="col heroku-footer-social">
+<h3>
+<span class="heroku-footer-icon-newsletter"></span>Subscribe to our monthly newsletter</h3>
+<form accept-charset="UTF-8" action="https://www.heroku.com/newsletter_signups" id="bookends-newsletter" method="post">
+<input name="utf8" type="hidden" value="✓"><input id="bookends-website" name="website" placeholder="do not fill this in" tabindex="-1" type="text"><input id="newsletter_signup_email" name="newsletter_signup[email]" placeholder="Your email address" required="required" type="email"><input name="commit" type="submit" value="Go"><p class="hide" id="bookends-newsletter-result"></p>
+</form>
+<ul class="social-list">
+<li class="has-dropdown">
+<a class="heroku-footer-icon-rss" href="http://feeds.feedburner.com/herokudevcenterarticles" target="_blank"> RSS</a><div class="dropdown"><ul>
+<li><a href="http://feeds.feedburner.com/herokudevcenterarticles" target="_blank"><span class="heroku-footer-icon-rss"></span>Dev Center Articles</a></li>
+<li><a href="http://feeds.feedburner.com/herokuchangelog" target="_blank"><span class="heroku-footer-icon-rss"></span>Dev Center Changelog</a></li>
+<li><a href="http://feeds2.feedburner.com/heroku" target="_blank"><span class="heroku-footer-icon-rss"></span>Heroku Blog</a></li>
+<li><a href="https://engineering.heroku.com/feed.xml" target="_blank"><span class="heroku-footer-icon-rss"></span>Engineering Blog</a></li>
+</ul></div>
+</li>
+<li class="has-dropdown">
+<a class="heroku-footer-icon-twitter" href="https://twitter.com/herokudevcenter" target="_blank"> Twitter</a><div class="dropdown"><ul>
+<li><a href="https://twitter.com/herokudevcenter" target="_blank"><span class="heroku-footer-icon-twitter"></span>Dev Center Articles</a></li>
+<li><a href="https://twitter.com/herokuchangelog" target="_blank"><span class="heroku-footer-icon-twitter"></span>Dev Center Changelog</a></li>
+<li><a href="https://twitter.com/heroku" target="_blank"><span class="heroku-footer-icon-twitter"></span>Heroku</a></li>
+<li><a href="https://twitter.com/herokustatus" target="_blank"><span class="heroku-footer-icon-twitter"></span>Heroku Status</a></li>
+</ul></div>
+</li>
+<li><a class="heroku-footer-icon-facebook" href="https://facebook.com/heroku" target="_blank"> Facebook</a></li>
+<li><a class="heroku-footer-icon-instagram" href="https://instagram.com/heroku" target="_blank"> Instagram</a></li>
+<li><a class="heroku-footer-icon-github" href="https://github.com/heroku" target="_blank"> Github</a></li>
+<li><a class="heroku-footer-icon-linkedin" href="https://www.linkedin.com/company/heroku" target="_blank"> LinkedIn</a></li>
+</ul>
+</div>
+</div>
+<div class="tertiary"><div class="wrapper">
+<div class="col"><a class="sfdc-logo" href="https://heroku.com/home" title="heroku.com">Heroku is a<span></span>company</a></div>
+<div class="col">
+<p class="copyright">©<script data-turbolinks-eval="false" type="text/javascript"> document.write(new Date().getFullYear());</script>2017 Salesforce.com</p>
+<ul>
+<li><a href="https://heroku.com/home">heroku.com</a></li>
+<li><a href="https://heroku.com/policy/tos">Terms of Service</a></li>
+<li><a href="https://heroku.com/policy/privacy">Privacy</a></li>
+<li><a href="https://heroku.com/policy/privacy#web_site_navigational_information">Cookies</a></li>
+</ul>
+</div>
+</div></div></footer>
+</div>
+<!-- Google Tag Manager -->
+<noscript>&lt;iframe src="//www.googletagmanager.com/ns.html?id=GTM-JD26" height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-JD26');</script>
+<!-- End Google Tag Manager -->
+<script src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/public-87315d81474d3be750c683fef3c0bfb044e4a78d1a18184a0c87f7e7aed6cff2.js.download"></script>
+
+<!--[if lt IE 9]>
+<script src="//devcenter-assets3.herokucdn.com/assets/public/vendor/selectivizr-1.0.min-5bcdad5ca1fd04e741f38ea80702024cb0b080f9e1763eb8fa4e79b1b6508b79.js"></script>
+<![endif]-->
+
+<script>
+  
+</script>
+
+
+
+
+<script type="text/javascript" id="">piAId="37622";piCId="30300";(function(){function a(){var b=document.createElement("script");b.type="text/javascript";b.src=("https:"==document.location.protocol?"https://pi":"http://cdn")+".pardot.com/pd.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)}window.attachEvent?window.attachEvent("onload",a):window.addEventListener("load",a,!1)})();</script>
+
+<script type="text/javascript" id="">!function(){function f(a){var c=/[?&]?([^=]c)=([^&]*)/;a=c.exec(a)||[];return a=decodeURIComponent(a[2])}function g(a){var c="; "+document.cookie;a=c.split("; "+a+"\x3d");return 2==a.length?a.pop().split(";").shift():void 0}function h(a,c){var b="",b=new Date;b.setTime(b.getTime()+12096E5);b="; expires\x3d"+b.toGMTString();document.cookie=a+"\x3d"+c+b+";domain\x3d.heroku.com;path\x3d/"}var e="campaign",d=g(e);"undefined"==typeof d&&(d=f(document.location.search),"undefined"!==d&&h(e,d))}();</script><script type="text/javascript" id="" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/js"></script><script type="text/javascript" id="">(function(){var a=function(a){a=new RegExp("[; ]"+a+"\x3d([^\\s;]*)");if(a=(" "+document.cookie).match(a))return unescape(a[1])};if(!a("jbfp")){var c=Math.random().toString(36).substring(2,15)+Math.random().toString(36).substring(2,15);document.cookie="jbfp\x3d"+(new Date).getTime()+"-"+c+";domain\x3dheroku.com;path\x3d/;max-age\x3d31536000"}var c=document.referrer,b=a("jbfp"),d=a("heroku_session"),a=document.createElement("img"),b="https://jambox-p.herokuapp.com/e?url\x3d"+escape(document.location.href)+
+"\x26fp\x3d"+b+"\x26li\x3d"+d;c&&(b+="\x26ref\x3d"+escape(c));a.src=b})();</script><img src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/0" height="0" width="0" style="display:none; visibility: hidden;"><img height="1" width="1" style="display:none;" alt="" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/adsct">
+<img height="1" width="1" style="display:none;" alt="" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/adsct(1)"><img height="1" width="1" style="display:none" src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/tr(2)"><iframe src="./Using WebSockets on Heroku with Python _ Heroku Dev Center_files/iframe.html" id="mm_sync_back_ground" style="visibility: hidden; display: none;"></iframe></body></html>
