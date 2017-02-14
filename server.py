@@ -12,7 +12,7 @@ socketio = SocketIO(app)
 def index():
     return render_template('index.html')
 
-if __name__ = '__main__':
+if __name__ == '__main__':
 	from werkzeug.wsgi import SharedDataMiddleware
 	app = SharedDataMiddleware(app, {
         '/': os.path.join(os.path.dirname(__file__), 'public')
